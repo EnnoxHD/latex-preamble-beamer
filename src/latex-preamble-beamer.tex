@@ -1,0 +1,91 @@
+\documentclass[aspectratio=169,ngerman]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[main=ngerman,english]{babel}
+\usepackage{bookman} % new modern default font
+\usepackage{blindtext} %%% FOR TESTING ONLY
+
+% style %
+\useoutertheme{infolines}
+\useinnertheme{rectangles}
+\usecolortheme{dove}
+
+% \beamertemplatenavigationsymbolsempty % do not show navigation bar
+
+\title[Crisis] % (optional, only for long titles)
+{The Economics of Financial Crisis}
+\subtitle{Evidence from India}
+\author[Author, Anders] % (optional, for multiple authors)
+{F.~Author\inst{1} \and S.~Anders\inst{2}}
+\institute[Universities Here and There] % (optional)
+{
+  \inst{1}%
+  Institute of Computer Science\\
+  University Here
+  \and
+  \inst{2}%
+  Institute of Theoretical Philosophy\\
+  University There
+}
+\date[KPT 2004] % (optional)
+{Conference on Presentation Techniques on \today}
+\subject{Computer Science}
+
+
+\begin{document}
+  \frame{\titlepage}
+
+    \begin{frame}
+        \frametitle{Table of Contents}
+        \tableofcontents
+    \end{frame}
+
+\section{first section}
+
+  \begin{frame}
+    \frametitle{This is the first slide}
+        \begin{columns}[c]
+            \begin{column}{.5\textwidth}
+                \begin{itemize}
+                    \item Item 1
+                    \item Item 2
+                    \begin{itemize}
+                        \item Subitem a
+                        \item Subitem b
+                        \item Subitem c
+                    \end{itemize}
+                    \item Item 3
+                \end{itemize}
+            \end{column}
+            \begin{column}{.5\textwidth}
+                \begin{itemize}
+                    \item Item 4
+                    \begin{itemize}
+                        \item Subitem d
+                        \item Subitem e
+                        \item Subitem f
+                    \end{itemize}
+                    \item Item 5
+                    \item Item 6
+                \end{itemize}
+            \end{column}
+        \end{columns}
+  \end{frame}
+
+\section{second one}
+
+  \begin{frame}
+    \frametitle{This is the second slide}
+    \framesubtitle{A bit more information about this}
+    \blindtext
+  \end{frame}
+
+\section{blocks section}
+
+    \begin{frame}{Blocks everywhere}
+        \begin{block}{This is a block title:}
+            \blindtext
+        \end{block}
+    \end{frame}
+
+\end{document}
