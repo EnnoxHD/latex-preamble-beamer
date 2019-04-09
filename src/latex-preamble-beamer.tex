@@ -3,14 +3,45 @@
 \usepackage[T1]{fontenc}
 \usepackage[main=ngerman,english]{babel}
 \usepackage{bookman} % new modern default font
+\usepackage{beamerthemesplit} % big header and footer
+\usepackage{minted} % for code presentation
+\usepackage{setspace} % set spacings
 \usepackage{blindtext} %%% FOR TESTING ONLY
 
 % style %
+\definecolor{codegray}{gray}{0.95}
+
 \useoutertheme{infolines}
 \useinnertheme{rectangles}
 \usecolortheme{dove}
+\setbeamercolor{block title}{bg=lightgray}
+\setbeamercolor{block body}{bg=codegray}
+\setbeamercolor{background}{bg=lightgray}
+\beamertemplatenavigationsymbolsempty
+
+\setbeamertemplate{headline}{%
+\leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex]{palette quaternary}%
+    \insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}
+    \end{beamercolorbox}%
+  }
+}
 
 % \beamertemplatenavigationsymbolsempty % do not show navigation bar
+
+% commands %
+\newcommand{\emptyline}{\vspace{15pt}}
+\newcommand{\emptyhalfline}{\vspace{7.5pt}}
+\newcommand{\emptycolumn}[1]{\begin{column}{#1\textwidth}\end{column}}
+\newcommand{\textcode}[1]{\textbf{\texttt{#1}}}
+\newenvironment{minicode}[1]{
+    \VerbatimEnvironment
+    \begin{minipage}{#1\textwidth}
+    \begin{minted}
+    [fontsize=\scriptsize,breaklines=true,bgcolor=codegray,style=bw]{java}}
+{\end{minted}\end{minipage}}
+
 
 \title[Crisis] % (optional, only for long titles)
 {The Economics of Financial Crisis}
@@ -33,22 +64,24 @@
 
 
 \begin{document}
-  \frame{\titlepage}
-
-    \begin{frame}
-        \frametitle{Table of Contents}
+  \linespread{1}
+  \section*{}
+  \frame{\thispagestyle{empty}\titlepage}
+    
+  \linespread{1.25}
+    \begin{frame}{Table of Contents}
         \tableofcontents
     \end{frame}
-
+    
 \section{first section}
 
-  \begin{frame}
-    \frametitle{This is the first slide}
+  \begin{frame}{This is the first slide}
         \begin{columns}[c]
-            \begin{column}{.5\textwidth}
+            \begin{column}{.35\textwidth}
                 \begin{itemize}
                     \item Item 1
                     \item Item 2
+                    \emptyline
                     \begin{itemize}
                         \item Subitem a
                         \item Subitem b
@@ -57,35 +90,50 @@
                     \item Item 3
                 \end{itemize}
             \end{column}
-            \begin{column}{.5\textwidth}
+            \begin{column}{.35\textwidth}
                 \begin{itemize}
                     \item Item 4
+                    \emptyhalfline
                     \begin{itemize}
                         \item Subitem d
                         \item Subitem e
                         \item Subitem f
                     \end{itemize}
                     \item Item 5
-                    \item Item 6
+                    \item \textcode{Item 6}
                 \end{itemize}
             \end{column}
+            \emptycolumn{0.3}
         \end{columns}
   \end{frame}
-
+  
 \section{second one}
 
-  \begin{frame}
-    \frametitle{This is the second slide}
+  \begin{frame}{This is the second slide}
     \framesubtitle{A bit more information about this}
     \blindtext
   \end{frame}
 
 \section{blocks section}
-
+    
     \begin{frame}{Blocks everywhere}
         \begin{block}{This is a block title:}
             \blindtext
         \end{block}
+    \end{frame}
+
+    \begin{frame}[fragile]{Some code blocks}
+        \begin{block}{Code over 9000:}
+% needs fragile option on frame for code
+\begin{minicode}{1}
+this.isSome(Java.CODE);
+\end{minicode}
+        \end{block}
+
+% needs fragile option on frame for code
+\begin{minicode}{0.525}
+Code.does(not("need").to()).be().in(A.BLOCK);
+\end{minicode}
     \end{frame}
 
 \end{document}
